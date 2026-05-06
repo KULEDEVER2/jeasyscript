@@ -1,77 +1,247 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>JeasyScript Docs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #0f0f0f;
-            color: white;
-        }
+<meta charset="UTF-8">
+<title>JeasyScript Docs v2.0</title>
 
-        .box {
-            background: #1c1c1c;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+}
 
-        code {
-            background: #2a2a2a;
-            padding: 4px 6px;
-            border-radius: 5px;
-        }
-    </style>
+/* NAVBAR */
+.nav {
+    position: sticky;
+    top: 0;
+    background: #111;
+    padding: 10px;
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid #333;
+    z-index: 10;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.nav a:hover {
+    opacity: 1;
+}
+
+/* SECTIONS */
+.section {
+    padding: 40px;
+    border-bottom: 1px solid #222;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+code {
+    background: #222;
+    padding: 4px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 3px 0;
+}
+</style>
 </head>
 
 <body>
 
-<h1>⚡ JeasyScript</h1>
-<p>JavaScript made easy to write and easy to read.</p>
-
-<div class="box">
-<h2>📦 Setup</h2>
-<code>&lt;script src="jeasyscript.js"&gt;&lt;/script&gt;</code>
+<!-- NAV -->
+<div class="nav">
+    <a href="#core">Core</a>
+    <a href="#elements">Elements</a>
+    <a href="#events">Events</a>
+    <a href="#style">Style</a>
+    <a href="#text">Text</a>
+    <a href="#values">Values</a>
+    <a href="#media">Media</a>
+    <a href="#batch">Batch</a>
+    <a href="#logic">Logic</a>
+    <a href="#storage">Storage</a>
+    <a href="#anim">Animations</a>
+    <a href="#nav">Navigation</a>
+    <a href="#debug">Debug</a>
 </div>
 
-<div class="box">
-<h2>🎯 Get Element</h2>
-<code>$("b1")</code>
-<p>Shortcut for document.getElementById</p>
+<h1 style="padding:20px;">⚡ JeasyScript v2.0 Docs</h1>
+<p style="padding:0 20px; opacity:0.7;">
+A lightweight JavaScript utility framework focused on readability and speed.
+</p>
+
+---
+
+<!-- CORE -->
+<div class="section" id="core">
+<h2>🔹 Core</h2>
+<code>$("id")</code><br>
+<code>qs("selector")</code><br>
+<code>qsa("selector")</code>
+<p>Basic DOM selection helpers.</p>
 </div>
 
-<div class="box">
-<h2>👁️ Show / Hide</h2>
-<code>hide("b1")</code><br>
-<code>show("b1")</code><br>
-<code>toggle("b1")</code>
+---
+
+<!-- ELEMENTS -->
+<div class="section" id="elements">
+<h2>📦 Elements</h2>
+<code>hide("id")</code><br>
+<code>show("id")</code><br>
+<code>toggle("id")</code><br>
+<code>remove("id")</code><br>
+<code>clear("id")</code>
+<p>Control visibility and content.</p>
 </div>
 
-<div class="box">
-<h2>🖱️ Click Events</h2>
-<code>click("b1", () => { ... })</code>
+---
+
+<!-- EVENTS -->
+<div class="section" id="events">
+<h2>🖱️ Events</h2>
+<code>click("id", fn)</code><br>
+<code>dblclick("id", fn)</code><br>
+<code>hover("id", inFn, outFn)</code><br>
+<code>input("id", fn)</code><br>
+<code>keydown(fn)</code>
+<p>Simple event handling system.</p>
 </div>
 
-<div class="box">
-<h2>🎨 Styling</h2>
-<code>css("b1", { backgroundColor: "black" })</code>
+---
+
+<!-- STYLE -->
+<div class="section" id="style">
+<h2>🎨 Style</h2>
+<code>css("id", {...})</code><br>
+<code>addClass("id","c")</code><br>
+<code>removeClass("id","c")</code><br>
+<code>toggleClass("id","c")</code>
+<p>Styling and class utilities.</p>
 </div>
 
-<div class="box">
+---
+
+<!-- TEXT -->
+<div class="section" id="text">
 <h2>📝 Text</h2>
-<code>text("b1", "Hello")</code>
+<code>text("id","Hello")</code><br>
+<code>html("id","&lt;b&gt;Hi&lt;/b&gt;")</code><br>
+<code>upper("id")</code><br>
+<code>lower("id")</code>
+<p>Text manipulation helpers.</p>
 </div>
 
-<div class="box">
-<h2>📋 Batch Actions</h2>
-<code>hideAll("b1","b2","b3")</code><br>
-<code>showAll("b1","b2")</code>
+---
+
+<!-- VALUES -->
+<div class="section" id="values">
+<h2>📊 Values</h2>
+<code>val("id")</code><br>
+<code>setVal("id", v)</code><br>
+<code>clearVal("id")</code><br>
+<code>numVal("id")</code>
+<p>Form and input helpers.</p>
 </div>
 
-<hr>
-<p>Made for faster coding, cleaner logic, and easier understanding.</p>
+---
+
+<!-- MEDIA -->
+<div class="section" id="media">
+<h2>🎥 Media</h2>
+<code>play("id")</code><br>
+<code>pause("id")</code><br>
+<code>stop("id")</code><br>
+<code>fullscreen("id")</code><br>
+<code>mute("id")</code>
+<p>Video and media controls.</p>
+</div>
+
+---
+
+<!-- BATCH -->
+<div class="section" id="batch">
+<h2>📋 Batch</h2>
+<code>hideAll(...ids)</code><br>
+<code>showAll(...ids)</code><br>
+<code>clickAll(ids, fn)</code><br>
+<code>addClassAll(ids,"c")</code>
+<p>Run actions on multiple elements.</p>
+</div>
+
+---
+
+<!-- LOGIC -->
+<div class="section" id="logic">
+<h2>🧠 Logic</h2>
+<code>is("id","attr")</code><br>
+<code>set("id","attr","v")</code><br>
+<code>hasClass("id","c")</code><br>
+<code>wait(ms)</code><br>
+<code>random(min,max)</code>
+<p>Helper logic tools.</p>
+</div>
+
+---
+
+<!-- STORAGE -->
+<div class="section" id="storage">
+<h2>💾 Storage</h2>
+<code>save("key",value)</code><br>
+<code>load("key")</code><br>
+<code>removeStore("key")</code><br>
+<code>clearStore()</code>
+<p>LocalStorage wrapper with JSON support.</p>
+</div>
+
+---
+
+<!-- ANIMATIONS -->
+<div class="section" id="anim">
+<h2>🎞️ Animations</h2>
+<code>fadeIn("id")</code><br>
+<code>fadeOut("id")</code><br>
+<code>move("id",x,y)</code><br>
+<code>scale("id",1.2)</code><br>
+<code>rotate("id",90)</code>
+<p>Simple UI animations using CSS transitions.</p>
+</div>
+
+---
+
+<!-- NAVIGATION -->
+<div class="section" id="nav">
+<h2>🔁 Navigation</h2>
+<code>go("url")</code><br>
+<code>openTab("url")</code><br>
+<code>back()</code><br>
+<code>forward()</code><br>
+<code>reload()</code><br>
+<code>setHash("#id")</code>
+<p>Page navigation helpers.</p>
+</div>
+
+---
+
+<!-- DEBUG -->
+<div class="section" id="debug">
+<h2>🐛 Debug</h2>
+<code>log()</code><br>
+<code>warn()</code><br>
+<code>err()</code><br>
+<code>time("label")</code><br>
+<code>timeEnd("label")</code>
+<p>Console debugging tools.</p>
+</div>
 
 </body>
 </html>
