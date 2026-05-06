@@ -1,175 +1,180 @@
 // =========================
-// JeasyScript v2.0
-// Lightweight JavaScript Utility Framework
+// JeasyScript v2.4
+// Readable + short JavaScript utility library
 // =========================
 
 // ---------- CORE ----------
-const $ = (id) => document.getElementById(id);
-const qs = (q) => document.querySelector(q);
-const qsa = (q) => document.querySelectorAll(q);
+function getid(id) {
+    return document.getElementById(id);
+}
 
-// ---------- ELEMENT CONTROL ----------
-const hide = (id) => $(id).style.display = "none";
-const show = (id) => $(id).style.display = "block";
+// ---------- ELEMENTS ----------
+function hide(id) {
+    getid(id).style.display = "none";
+}
 
-const toggle = (id) => {
-    const el = $(id);
+function show(id) {
+    getid(id).style.display = "block";
+}
+
+function toggle(id) {
+    var el = getid(id);
     el.style.display = (el.style.display === "none") ? "block" : "none";
-};
+}
 
-const remove = (id) => $(id).remove();
-const clear = (id) => $(id).innerHTML = "";
+function remove(id) {
+    getid(id).remove();
+}
 
-const exists = (id) => !!$(id);
+function clear(id) {
+    getid(id).innerHTML = "";
+}
 
 // ---------- EVENTS ----------
-const click = (id, fn) => $(id).addEventListener("click", fn);
+function click(id, fn) {
+    getid(id).addEventListener("click", fn);
+}
 
-const dblclick = (id, fn) => $(id).addEventListener("dblclick", fn);
+function dbl(id, fn) {
+    getid(id).addEventListener("dblclick", fn);
+}
 
-const hover = (id, inFn, outFn) => {
-    const el = $(id);
-    el.addEventListener("mouseover", inFn);
-    el.addEventListener("mouseout", outFn);
-};
+function hover(id, on, off) {
+    var el = getid(id);
+    el.addEventListener("mouseover", on);
+    el.addEventListener("mouseout", off);
+}
 
-const input = (id, fn) => $(id).addEventListener("input", fn);
+function input(id, fn) {
+    getid(id).addEventListener("input", fn);
+}
 
-const keydown = (fn) => document.addEventListener("keydown", fn);
-const keyup = (fn) => document.addEventListener("keyup", fn);
-
-const scroll = (fn) => window.addEventListener("scroll", fn);
-const resize = (fn) => window.addEventListener("resize", fn);
+function key(fn) {
+    document.addEventListener("keydown", fn);
+}
 
 // ---------- STYLE ----------
-const css = (id, styles) => Object.assign($(id).style, styles);
+function css(id, styles) {
+    Object.assign(getid(id).style, styles);
+}
 
-const addClass = (id, c) => $(id).classList.add(c);
-const removeClass = (id, c) => $(id).classList.remove(c);
-const toggleClass = (id, c) => $(id).classList.toggle(c);
+function add(id, className) {
+    getid(id).classList.add(className);
+}
 
-const bg = (id, c) => $(id).style.background = c;
-const color = (id, c) => $(id).style.color = c;
-const fontSize = (id, v) => $(id).style.fontSize = v;
-const opacity = (id, v) => $(id).style.opacity = v;
+function rem(id, className) {
+    getid(id).classList.remove(className);
+}
 
-// ---------- TEXT / HTML ----------
-const text = (id, v) => $(id).innerText = v;
-const html = (id, v) => $(id).innerHTML = v;
+function tog(id, className) {
+    getid(id).classList.toggle(className);
+}
 
-const appendText = (id, v) => $(id).innerText += v;
-const appendHTML = (id, v) => $(id).innerHTML += v;
+// ---------- TEXT ----------
+function text(id, value) {
+    getid(id).innerText = value;
+}
 
-const upper = (id) => text(id, $(id).innerText.toUpperCase());
-const lower = (id) => text(id, $(id).innerText.toLowerCase());
+function html(id, value) {
+    getid(id).innerHTML = value;
+}
 
-// ---------- VALUES ----------
-const val = (id) => $(id).value;
-const setVal = (id, v) => $(id).value = v;
+function addText(id, value) {
+    getid(id).innerText += value;
+}
 
-const clearVal = (id) => $(id).value = "";
-const numVal = (id) => Number($(id).value);
+// ---------- INPUT ----------
+function val(id) {
+    return getid(id).value;
+}
 
-const isEmpty = (id) => val(id) === "";
+function setVal(id, value) {
+    getid(id).value = value;
+}
 
-// ---------- MEDIA / VIDEO ----------
-const play = (id) => $(id).play();
-const pause = (id) => $(id).pause();
+function clearVal(id) {
+    getid(id).value = "";
+}
 
-const stop = (id) => {
-    const v = $(id);
-    v.pause();
-    v.currentTime = 0;
-};
+// ---------- MEDIA ----------
+function play(id) {
+    getid(id).play();
+}
 
-const fullscreen = (id) => $(id).requestFullscreen();
+function pause(id) {
+    getid(id).pause();
+}
 
-const mute = (id) => $(id).muted = true;
-const unmute = (id) => $(id).muted = false;
-
-// ---------- BATCH ----------
-const each = (arr, fn) => arr.forEach(fn);
-
-const hideAll = (...ids) => ids.forEach(hide);
-const showAll = (...ids) => ids.forEach(show);
-const clickAll = (ids, fn) => ids.forEach(id => click(id, fn));
-
-const addClassAll = (ids, c) => ids.forEach(id => addClass(id, c));
-
-// ---------- LOGIC / HELPERS ----------
-const is = (id, attr) => $(id).getAttribute(attr);
-const set = (id, attr, v) => $(id).setAttribute(attr, v);
-
-const hasClass = (id, c) => $(id).classList.contains(c);
-
-const wait = (ms) => new Promise(r => setTimeout(r, ms));
-
-const random = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
-
-// ---------- DEBUG ----------
-const log = (...a) => console.log(...a);
-const warn = (...a) => console.warn(...a);
-const err = (...a) => console.error(...a);
-
-const time = (l) => console.time(l);
-const timeEnd = (l) => console.timeEnd(l);
-
-// ---------- STORAGE ----------
-const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
-
-const load = (k) => {
-    const d = localStorage.getItem(k);
-    return d ? JSON.parse(d) : null;
-};
-
-const removeStore = (k) => localStorage.removeItem(k);
-const clearStore = () => localStorage.clear();
-
-const existsStore = (k) => localStorage.getItem(k) !== null;
+function stop(id) {
+    var el = getid(id);
+    el.pause();
+    el.currentTime = 0;
+}
 
 // ---------- ANIMATIONS ----------
-const fadeIn = (id, t = 500) => {
-    const el = $(id);
-    el.style.transition = `opacity ${t}ms`;
-    el.style.opacity = 1;
-};
+function fadeIn(id, t) {
+    t = t || 500;
+    var el = getid(id);
+    el.style.transition = "opacity " + t + "ms";
+    el.style.opacity = "1";
+}
 
-const fadeOut = (id, t = 500) => {
-    const el = $(id);
-    el.style.transition = `opacity ${t}ms`;
-    el.style.opacity = 0;
-};
+function fadeOut(id, t) {
+    t = t || 500;
+    var el = getid(id);
+    el.style.transition = "opacity " + t + "ms";
+    el.style.opacity = "0";
+}
 
-const move = (id, x, y, t = 300) => {
-    const el = $(id);
-    el.style.transition = `transform ${t}ms`;
-    el.style.transform = `translate(${x}px, ${y}px)`;
-};
+function move(id, x, y, t) {
+    t = t || 300;
+    var el = getid(id);
+    el.style.transition = "transform " + t + "ms";
+    el.style.transform = "translate(" + x + "px," + y + "px)";
+}
 
-const scale = (id, s, t = 300) => {
-    const el = $(id);
-    el.style.transition = `transform ${t}ms`;
-    el.style.transform = `scale(${s})`;
-};
-
-const rotate = (id, d, t = 300) => {
-    const el = $(id);
-    el.style.transition = `transform ${t}ms`;
-    el.style.transform = `rotate(${d}deg)`;
-};
+function scale(id, s, t) {
+    t = t || 300;
+    var el = getid(id);
+    el.style.transition = "transform " + t + "ms";
+    el.style.transform = "scale(" + s + ")";
+}
 
 // ---------- NAVIGATION ----------
-const go = (url) => window.location.href = url;
+function go(url) {
+    window.location.href = url;
+}
 
-const openTab = (url) => window.open(url, "_blank");
+function tab(url) {
+    window.open(url, "_blank");
+}
 
-const back = () => window.history.back();
+function back() {
+    window.history.back();
+}
 
-const forward = () => window.history.forward();
+function forward() {
+    window.history.forward();
+}
 
-const reload = () => window.location.reload();
+function reload() {
+    window.location.reload();
+}
 
-const setHash = (h) => window.location.hash = h;
+// ---------- STORAGE ----------
+function save(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
 
-const getHash = () => window.location.hash.replace("#", "");
+function load(key) {
+    var data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
+function del(key) {
+    localStorage.removeItem(key);
+}
+
+function clearStore() {
+    localStorage.clear();
+}

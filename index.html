@@ -2,38 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JeasyScript Docs v2.0</title>
+<title>JeasyScript Docs v2.4</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #0f0f0f;
-    color: white;
+    color: #fff;
 }
 
-/* NAVBAR */
+/* TOP NAV (PINNED CATEGORIES) */
 .nav {
     position: sticky;
     top: 0;
     background: #111;
     padding: 10px;
     display: flex;
-    gap: 12px;
-    border-bottom: 1px solid #333;
-    z-index: 10;
     flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid #333;
 }
 
 .nav a {
-    color: white;
+    color: #bbb;
     text-decoration: none;
     font-size: 13px;
-    opacity: 0.7;
 }
 
 .nav a:hover {
-    opacity: 1;
+    color: white;
 }
 
 /* SECTIONS */
@@ -44,40 +42,38 @@ body {
 
 h2 {
     margin-top: 0;
+    color: #00d4ff;
 }
 
 code {
+    display: inline-block;
     background: #222;
     padding: 4px 6px;
-    border-radius: 5px;
-    display: inline-block;
     margin: 3px 0;
+    border-radius: 5px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <div class="nav">
     <a href="#core">Core</a>
     <a href="#elements">Elements</a>
     <a href="#events">Events</a>
     <a href="#style">Style</a>
     <a href="#text">Text</a>
-    <a href="#values">Values</a>
+    <a href="#input">Input</a>
     <a href="#media">Media</a>
-    <a href="#batch">Batch</a>
-    <a href="#logic">Logic</a>
+    <a href="#animations">Animations</a>
+    <a href="#navigation">Navigation</a>
     <a href="#storage">Storage</a>
-    <a href="#anim">Animations</a>
-    <a href="#nav">Navigation</a>
-    <a href="#debug">Debug</a>
 </div>
 
-<h1 style="padding:20px;">⚡ JeasyScript v2.0 Docs</h1>
+<h1 style="padding:20px;">⚡ JeasyScript v2.4</h1>
 <p style="padding:0 20px; opacity:0.7;">
-A lightweight JavaScript utility framework focused on readability and speed.
+A lightweight, readable JavaScript utility library.
 </p>
 
 ---
@@ -85,10 +81,8 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- CORE -->
 <div class="section" id="core">
 <h2>🔹 Core</h2>
-<code>$("id")</code><br>
-<code>qs("selector")</code><br>
-<code>qsa("selector")</code>
-<p>Basic DOM selection helpers.</p>
+<code>get("id")</code>
+<p>Gets an element by ID</p>
 </div>
 
 ---
@@ -96,12 +90,21 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- ELEMENTS -->
 <div class="section" id="elements">
 <h2>📦 Elements</h2>
+
 <code>hide("id")</code><br>
+<p>Hides element</p>
+
 <code>show("id")</code><br>
+<p>Shows element</p>
+
 <code>toggle("id")</code><br>
+<p>Switches visibility</p>
+
 <code>remove("id")</code><br>
-<code>clear("id")</code>
-<p>Control visibility and content.</p>
+<p>Deletes element from page</p>
+
+<code>clear("id")</code><br>
+<p>Clears inner content</p>
 </div>
 
 ---
@@ -109,12 +112,21 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- EVENTS -->
 <div class="section" id="events">
 <h2>🖱️ Events</h2>
+
 <code>click("id", fn)</code><br>
-<code>dblclick("id", fn)</code><br>
-<code>hover("id", inFn, outFn)</code><br>
+<p>Runs function on click</p>
+
+<code>dbl("id", fn)</code><br>
+<p>Runs function on double click</p>
+
+<code>hover("id", on, off)</code><br>
+<p>Hover in/out events</p>
+
 <code>input("id", fn)</code><br>
-<code>keydown(fn)</code>
-<p>Simple event handling system.</p>
+<p>Runs on typing/input</p>
+
+<code>key(fn)</code><br>
+<p>Keyboard press event</p>
 </div>
 
 ---
@@ -122,11 +134,18 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- STYLE -->
 <div class="section" id="style">
 <h2>🎨 Style</h2>
-<code>css("id", {...})</code><br>
-<code>addClass("id","c")</code><br>
-<code>removeClass("id","c")</code><br>
-<code>toggleClass("id","c")</code>
-<p>Styling and class utilities.</p>
+
+<code>css("id", {color:"red"})</code><br>
+<p>Change styles</p>
+
+<code>add("id","class")</code><br>
+<p>Add class</p>
+
+<code>rem("id","class")</code><br>
+<p>Remove class</p>
+
+<code>tog("id","class")</code><br>
+<p>Toggle class</p>
 </div>
 
 ---
@@ -134,23 +153,31 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- TEXT -->
 <div class="section" id="text">
 <h2>📝 Text</h2>
-<code>text("id","Hello")</code><br>
-<code>html("id","&lt;b&gt;Hi&lt;/b&gt;")</code><br>
-<code>upper("id")</code><br>
-<code>lower("id")</code>
-<p>Text manipulation helpers.</p>
+
+<code>text("id","hello")</code><br>
+<p>Set text</p>
+
+<code>html("id","&lt;b&gt;hi&lt;/b&gt;")</code><br>
+<p>Set HTML</p>
+
+<code>addText("id","more")</code><br>
+<p>Adds text</p>
 </div>
 
 ---
 
-<!-- VALUES -->
-<div class="section" id="values">
-<h2>📊 Values</h2>
+<!-- INPUT -->
+<div class="section" id="input">
+<h2>📊 Input</h2>
+
 <code>val("id")</code><br>
-<code>setVal("id", v)</code><br>
+<p>Get input value</p>
+
+<code>setVal("id","value")</code><br>
+<p>Set input value</p>
+
 <code>clearVal("id")</code><br>
-<code>numVal("id")</code>
-<p>Form and input helpers.</p>
+<p>Clear input</p>
 </div>
 
 ---
@@ -158,37 +185,49 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- MEDIA -->
 <div class="section" id="media">
 <h2>🎥 Media</h2>
+
 <code>play("id")</code><br>
+<p>Play media</p>
+
 <code>pause("id")</code><br>
+<p>Pause media</p>
+
 <code>stop("id")</code><br>
-<code>fullscreen("id")</code><br>
-<code>mute("id")</code>
-<p>Video and media controls.</p>
+<p>Stop and reset media</p>
 </div>
 
 ---
 
-<!-- BATCH -->
-<div class="section" id="batch">
-<h2>📋 Batch</h2>
-<code>hideAll(...ids)</code><br>
-<code>showAll(...ids)</code><br>
-<code>clickAll(ids, fn)</code><br>
-<code>addClassAll(ids,"c")</code>
-<p>Run actions on multiple elements.</p>
+<!-- ANIMATIONS -->
+<div class="section" id="animations">
+<h2>🎞️ Animations</h2>
+
+<code>fadeIn("id")</code><br>
+<code>fadeOut("id")</code><br>
+<code>move("id",x,y)</code><br>
+<code>scale("id",value)</code>
 </div>
 
 ---
 
-<!-- LOGIC -->
-<div class="section" id="logic">
-<h2>🧠 Logic</h2>
-<code>is("id","attr")</code><br>
-<code>set("id","attr","v")</code><br>
-<code>hasClass("id","c")</code><br>
-<code>wait(ms)</code><br>
-<code>random(min,max)</code>
-<p>Helper logic tools.</p>
+<!-- NAVIGATION -->
+<div class="section" id="navigation">
+<h2>🔁 Navigation</h2>
+
+<code>go("url")</code><br>
+<p>Go to page</p>
+
+<code>tab("url")</code><br>
+<p>Open new tab</p>
+
+<code>back()</code><br>
+<p>Go back</p>
+
+<code>forward()</code><br>
+<p>Go forward</p>
+
+<code>reload()</code><br>
+<p>Reload page</p>
 </div>
 
 ---
@@ -196,51 +235,18 @@ A lightweight JavaScript utility framework focused on readability and speed.
 <!-- STORAGE -->
 <div class="section" id="storage">
 <h2>💾 Storage</h2>
+
 <code>save("key",value)</code><br>
+<p>Save data</p>
+
 <code>load("key")</code><br>
-<code>removeStore("key")</code><br>
-<code>clearStore()</code>
-<p>LocalStorage wrapper with JSON support.</p>
-</div>
+<p>Load data</p>
 
----
+<code>del("key")</code><br>
+<p>Delete data</p>
 
-<!-- ANIMATIONS -->
-<div class="section" id="anim">
-<h2>🎞️ Animations</h2>
-<code>fadeIn("id")</code><br>
-<code>fadeOut("id")</code><br>
-<code>move("id",x,y)</code><br>
-<code>scale("id",1.2)</code><br>
-<code>rotate("id",90)</code>
-<p>Simple UI animations using CSS transitions.</p>
-</div>
-
----
-
-<!-- NAVIGATION -->
-<div class="section" id="nav">
-<h2>🔁 Navigation</h2>
-<code>go("url")</code><br>
-<code>openTab("url")</code><br>
-<code>back()</code><br>
-<code>forward()</code><br>
-<code>reload()</code><br>
-<code>setHash("#id")</code>
-<p>Page navigation helpers.</p>
-</div>
-
----
-
-<!-- DEBUG -->
-<div class="section" id="debug">
-<h2>🐛 Debug</h2>
-<code>log()</code><br>
-<code>warn()</code><br>
-<code>err()</code><br>
-<code>time("label")</code><br>
-<code>timeEnd("label")</code>
-<p>Console debugging tools.</p>
+<code>clearStore()</code><br>
+<p>Clear all storage</p>
 </div>
 
 </body>
